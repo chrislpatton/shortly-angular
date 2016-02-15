@@ -1,3 +1,15 @@
-<div id='container'>
-  <!-- Your html here -->
+<div id='container' ng-controller='LinksController'>
+  <form name="form">
+    <input type='text' ng-model="search" placeholder="filter">
+  </form>
+
+  <div class="link" ng-repeat='links in data.links | filter:search | orderBy:"created_at"'>
+    <img src="assets/redirect_icon.png">
+    <div class="info">
+      <div class="visits"><span class="count">{{ links.visits }}</span> visits</div>
+      <div class="title">{{ links.title }}</div>
+      <div class="original">{{ links.url }}</div>
+      <a href="http://localhost:3000/api/links/{{ links.code }}">{{ links.base_url }}/{{ links.code }}</a>
+    </div>
+  </div>
 </div>

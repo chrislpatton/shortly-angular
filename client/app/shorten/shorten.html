@@ -1,5 +1,15 @@
-<div id='container'>
+<div id='container' class="creator" ng-controller = 'ShortenController'>
 <!-- Your code here -->
+<form name="shortlyForm" ng-submit="addLink()" novalidate> 
+  <input name="inputLink" type = 'url' placedholder="Enter your URL here." ng-model="link.url" ng-class="{'error': shortlyForm.$invalid && shortlyForm.$dirty}" required></input>
+  <button type="submit" ng-disabled="shortlyForm.$invalid">Add</button>  
+
+
+
+
+<div ng-if="shortlyForm.inputLink.$error.required && shortlyForm.$dirty" class="message"><h2>Url Required</h2></div>
+<div ng-show="shortlyForm.inputLink.$error.url && shortlyForm.$dirty" class="message"><h2>Not a valid Url</h2></div>
+</form>
 
 </div>
 
